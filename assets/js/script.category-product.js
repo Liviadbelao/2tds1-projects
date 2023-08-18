@@ -92,6 +92,7 @@ function createCategories(){
     const categoryName = document.getElementById('categoryNameInput').value;
     categoriesList.addCategory(categoryName);
     clearFields();
+    displayCategory();
     console.log(categoriesList.categories);
     console.log("categorias criadas")
 }
@@ -133,7 +134,13 @@ function editProduct(id, name, price, category){
     productsList.updateProduct(id, name, price, category);
     console.log(productsList.products)
 }
-
+function displayCategory(){
+    let msg = '';
+    categoriesList.categories.forEach((category) =>{
+        msg += `<li>${category.name}</li>`;
+    })
+    document.getElementById('categoriesList').innerHTML = msg;
+}
 function clearFields(){
     document.getElementById("categoryNameInput").value = '';
 }
