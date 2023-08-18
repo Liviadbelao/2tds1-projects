@@ -8,6 +8,7 @@ class Category{
       this.products = [];
     }
 }
+
 class Product{
     constructor(id, name, price, category){
         this.id = id;
@@ -16,18 +17,25 @@ class Product{
         this.category = category;
     }
 }
+
 class CategoryService{
     constructor(){
         this.categories = [];
         this.nextCategoryId = 1;
     }
-
+// CRUD => create, read, update, delete
+// CRUD => CREATE
     addCategory(name){
      const id = this.nextCategoryId;
      this.nextCategoryId++;
 
      const category = new Category(id, name);
      this.categories.push(category);
+    }
+
+    //R=> read
+    getCategoryById(id){
+        return this.categories.find((category) => category.id == id);
     }
 }
 
@@ -46,6 +54,7 @@ class ProductService{
         category.products.push(product);
     }
 }
+
 const categoriesList = new CategoryService();
 const productsList = new ProductService();
 
