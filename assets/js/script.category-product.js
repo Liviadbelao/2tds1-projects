@@ -69,7 +69,20 @@ class ProductService{
     getProductById(id){
      return this.products.find((product) => product.id == id);
     }
-    
+//update
+    updateProduct(id, name, price, category){
+        const product = this.getProductById(id);
+        product.name = name;
+        product.price = price;
+        product.category = category;
+    }
+    //d => delete product
+    deleteProduct(id){
+        const product = this.getProductById(id);
+        const index = this.products.indexOf(product);
+
+        this.products.splice(index, 1);
+    }
 }
 
 const categoriesList = new CategoryService();
@@ -112,4 +125,8 @@ function findProduct(id){
     const product = productsList.getProductById(id);
 
     console.log(product.name);
+}
+function editProduct(id, name, price, category){
+    productsList.updateProduct(id, name, price, category);
+    console.log(productsList.products)
 }
