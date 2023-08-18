@@ -96,4 +96,8 @@ function editCategory(id, name){
     console.log(categoriesList.categories);
 }
 
+function removeCategory(id){
+    categoriesList.deleteCategory(id);
 
+    console.log(categoriesList.categories);
+}
