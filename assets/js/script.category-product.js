@@ -83,3 +83,8 @@ function findCategory(id){
    const category = categoriesList.getCategoryById(id);
    console.log(category.name);
 }
+
+function editCategory(id, name){
+    categoriesList.updateCategory(id, name);
+    console.log(categoriesList.categories);
+}
