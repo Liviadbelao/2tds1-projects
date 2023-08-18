@@ -30,12 +30,37 @@ class CategoryService{
      this.categories.push(category);
     }
 }
-const categoriesList = new CategoryService();
 
+class ProductService{
+    constructor(){
+        this.products = [];
+        this.nextProductId  = 1;
+    }
+
+    addProduct(name, price, category){
+        const id = this.nextProductId;
+        this.nextProductId++;
+
+        const product = new Product(id, name, price, category);
+        this.products.push(product);
+        category.products.push(product);
+    }
+}
+const categoriesList = new CategoryService();
+const productsList = new ProductService();
 
 function createCategories(){
     const categoryName = 'Candies';
     categoriesList.addCategory(categoryName);
     console.log(categoriesList.categories);
+}
+
+function createProduct(){
+    const productName = "choco";
+    const productPrice = 0.5;
+    const productCategory = categoriesList.categories[0];
+    
+    productsList.addProduct(productName, productPrice, productCategory);
+    console.log(productsList.products);
 }
 
