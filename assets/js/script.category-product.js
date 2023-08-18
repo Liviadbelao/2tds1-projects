@@ -65,6 +65,10 @@ class ProductService{
         this.products.push(product);
         category.products.push(product);
     }
+//r - read
+    getProductById(id){
+     return this.products.find((product) => product.id == id);
+    }
 }
 
 const categoriesList = new CategoryService();
@@ -101,3 +105,4 @@ function removeCategory(id){
 
     console.log(categoriesList.categories);
 }
+
